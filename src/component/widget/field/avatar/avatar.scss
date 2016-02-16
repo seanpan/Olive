@@ -1,0 +1,35 @@
+@import "../../../../style/1688/sass/src/vars.scss";
+
+.field {
+  &.avatar {
+    .avatarImage {
+      margin-right: 10px;
+      float: left;
+      img {
+        width: $avatarImageWidth;
+        height: $avatarHeight;
+      }
+    }
+    .avatarInfo {
+      float: left;
+      width: 110px;
+      height: $avatarHeight;
+      font-size: 12px;
+      .name {
+        margin: 0;
+        margin-bottom: 10px;
+        color: #3c3c3c;
+      }
+      .content {
+        margin: 0;
+        margin-bottom: 10px;
+        line-height: 18px;
+        color: #666;
+      }
+      .link {
+        text-decoration: none;
+        color: #1babb4;
+      }
+    }
+  }
+}

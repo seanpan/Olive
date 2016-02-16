@@ -23,14 +23,22 @@
   },
   "homepage": "https://github.com/seanpan/Olive#readme",
   "dependencies": {
+    "babel-preset-react": "~6.3.13",
     "jquery": "^2.1.4",
-    "oliveroot": "^1.0.1",
+    "jsx-loader": "~0.13.2",
+    "node-sass": "~3.4.2",
+    "oliveroot": "^1.0.5",
+    "raw-loader": "~0.5.1",
+    "react": "~0.14.6",
+    "react-dom": "~0.14.6",
+    "react-redux": "~4.1.1",
+    "redux": "~3.1.2",
+    "sass-loader": "~3.1.2",
     "underscore": "^1.8.3"
   },
   "devDependencies": {
-    "browserify": "^11.2.0",
-    "gulp": "^3.9.0",
-    "gulp-streamify": "^1.0.2",
-    "vinyl-source-stream": "^1.1.0"
+    "css-loader": "^0.23.1",
+    "style-loader": "^0.13.0",
+    "webpack": "^1.12.11"
   }
 }

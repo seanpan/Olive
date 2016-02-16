@@ -1,0 +1,15 @@
+<div class="panel <%= obj.options.cls %>" style="<%= obj.parsedStyle %>">
+    <div class="header">
+        <div class="title">
+            <div class="orangeLine"></div>
+            <div class="titleContent"><%= obj.options.title %></div>
+            <div class="seperator"></div>
+        </div>
+        <% if(obj.options.moreBtn){%>
+        <div class="link"><%=obj.options.moreBtn%></div>
+        <%}%>
+    </div>
+    <div class="panelBody">
+        <%= obj.content %>
+    </div>
+</div>

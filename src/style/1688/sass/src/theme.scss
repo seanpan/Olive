@@ -1,0 +1,108 @@
+@import "./vars.scss";
+
+body {
+  font: $globalFont;
+}
+
+em {
+  font-style: normal;
+}
+
+.clear {
+  float: none !important;
+  clear: both;
+}
+
+.hbox > div {
+  float: left;
+}
+
+.panel {
+  border-top: 2px solid $borderColorDark;
+  border-bottom: 1px solid $borderColorLight;
+  border-left: 1px solid $borderColorLight;
+  &.last {
+    border-right: 1px solid $borderColorLight;
+  }
+  &.dark {
+    background-color: $darkBackground;
+  }
+  .panelBody {
+    padding: 20px 20px;
+  }
+}
+
+.header {
+  position: relative;
+  height: 37px;
+  border-bottom: 1px solid $borderColorLight;
+
+  .title {
+    position: relative;
+    display: inline-block;
+
+    .orangeLine {
+      background-color: $colorOrange;
+      font-size: 0;
+      height: 2px;
+      position: absolute;
+      top: -2px;
+      width: 100%;
+    }
+
+    .titleContent {
+      margin: 10px 12px 10px 25px;
+      color: rgb(236, 104, 70);
+      font: 16px/16px 'Microsoft YaHei', Tahoma, Arial, 宋体, sans-serif;
+      font-weight: 700;
+    }
+
+    .seperator {
+      background-color: $borderColorLight;
+      height: 15px;
+      position: absolute;
+      right: 0;
+      top: 15px;
+      width: 1px;
+    }
+  }
+}
+
+.triangle-outer {
+  border-color: #E2E2E2 transparent transparent transparent;
+  _top: 6px;
+}
+
+.triangle-outer, .triangle-inner {
+  border-style: solid;
+  border-width: 5px 5px 0;
+  color: #FFF;
+  font-size: 0;
+  height: 0;
+  line-height: 0;
+  margin: 0 auto;
+  _margin-top: -5px;
+  position: relative;
+  width: 0;
+}
+
+.triangle-inner {
+  border-color: #FFF transparent transparent transparent;
+  top: -7px;
+  _top: 4px;
+}
+
+.link {
+  color: #999;
+  cursor: pointer;
+  text-decoration: none;
+  &:hover {
+    color: #FF7300 !important;
+  }
+  &.listItem {
+    color: #666;
+  }
+  &.underline {
+    text-decoration: underline;
+  }
+}

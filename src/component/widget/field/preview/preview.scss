@@ -1,0 +1,93 @@
+@import "../../../../style/1688/sass/src/vars.scss";
+
+.field {
+  &.preview {
+    overflow: hidden;
+    font-size: 12px;
+    color: #666;
+    line-height: 12px;
+    a {
+      text-decoration: none;
+      &:hover {
+        color: #FF7300;
+        text-decoration: underline;
+      }
+      .previewImage {
+        display: block;
+        height: 125px;
+        width: 200px;
+      }
+      .previewTitle {
+        text-decoration: none;
+        background-color: #FFF;
+        border-bottom: 1px solid #E7E7E7;
+        border-left: 1px solid #E7E7E7;
+        border-right: 1px solid #E7E7E7;
+        display: block;
+        height: 34px;
+        line-height: 34px;
+        text-align: center;
+        width: 198px;
+        .previewTitleContent {
+          text-decoration: none;
+          font-style: normal;
+          display: block;
+          margin: 0 auto;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          width: 180px;
+        }
+      }
+    }
+    .previewBottom {
+      line-height: 12px;
+      margin-top: 14px;
+      padding-left: 4px;
+      width: 100%;
+      color: #999;
+      .mod-star {
+        display: inline-block;
+        height: 12px;
+        line-height: 0;
+        margin-right: 3px;
+        overflow: hidden;
+        position: relative;
+        text-align: left;
+        width: 79px;
+        zoom: 1;
+        .progress {
+          background: url(//cbu01.alicdn.com/cms/upload/2014/467/778/1877764_1867113056.png) no-repeat;
+          position: absolute;
+          height: 14px;
+          top: 0;
+          left: 0;
+          background-position: 0 -980px;
+          z-index: 1;
+          width: 88.0%;
+        }
+        .star {
+          background: url(//cbu01.alicdn.com/cms/upload/2014/467/778/1877764_1867113056.png) no-repeat;
+          position: absolute;
+          height: 14px;
+          top: 0;
+          left: 0;
+          background-position: 0 -1010px;
+          width: 100%;
+        }
+      }
+      .score {
+        width: 32px;
+        display: inline-block;
+        zoom: 1;
+      }
+      .study-count {
+        border-left: 1px solid #E6E6E6;
+        margin-left: 4px;
+        padding-left: 4px;
+        display: inline-block;
+        zoom: 1;
+      }
+    }
+  }
+}
