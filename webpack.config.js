@@ -1,6 +1,9 @@
 /**
  * Created by Sean on 16/1/20.
  */
+var webpack = require('webpack');
+var CommonsChunkPlugin = require("webpack/lib/optimize/CommonsChunkPlugin");
+
 module.exports = {
     entry: "./entry.js",
     output: {
@@ -15,5 +18,9 @@ module.exports = {
             {test: /\.scss$/, loader: "style!css!sass"},
             {test: /\.jsx?$/, loaders: ['jsx?harmony']}
         ]
-    }
+    },
+    plugins: [
+        new CommonsChunkPlugin("commons.chunk.js"),
+        //new webpack.optimize.UglifyJsPlugin({minimize: true})
+    ]
 };

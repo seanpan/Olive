@@ -37,7 +37,7 @@ var recommendJsonObj = {
                             ]
                         },
                         {
-                            name: '一.SEO的概念',
+                            name: '二.SEO的概念',
                             items: [
                                 {
                                     name: '讲师介绍',
