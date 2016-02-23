@@ -6,10 +6,146 @@ var Link = Olive.components.Link;
 var Avatar = Olive.components.Avatar;
 var Preview = Olive.components.Preview;
 var Player = Olive.components.Player;
+var Recommend = Olive.components.Recommend;
 var StarVote = Olive.components.StarVote;
 var Panel = Olive.components.Panel;
 
 //Ternary Binary HBox VBox
+
+
+var recommendJsonObj = {
+    activeIndex: 0,
+    data: [
+        {
+            tabName: '相关系列课',
+            items: [
+                {
+                    name: '装修精品旺铺留住买家',
+                    count: 10,
+                    items: [
+                        {
+                            name: '一.SEO的概念',
+                            items: [
+                                {
+                                    name: '讲师介绍',
+                                    time: '12:00'
+                                },
+                                {
+                                    name: '讲师介绍二',
+                                    time: '12:00'
+                                }
+                            ]
+                        },
+                        {
+                            name: '一.SEO的概念',
+                            items: [
+                                {
+                                    name: '讲师介绍',
+                                    time: '12:00'
+                                },
+                                {
+                                    name: '讲师介绍二',
+                                    time: '12:00'
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    name: '装修精品旺铺留住买家',
+                    count: 10,
+                    items: [
+                        {
+                            name: '讲师介绍',
+                            time: '12:00'
+                        },
+                        {
+                            name: '讲师介绍',
+                            time: '12:00'
+                        }
+                    ]
+                },
+                {
+                    name: '装修精品旺铺留住买家',
+                    count: 10,
+                    items: []
+                },
+                {
+                    name: '装修精品旺铺留住买家',
+                    count: 10,
+                    items: []
+                },
+                {
+                    name: '装修精品旺铺留住买家',
+                    count: 10,
+                    items: []
+                },
+                {
+                    name: '装修精品旺铺留住买家',
+                    count: 10,
+                    items: []
+                },
+                {
+                    name: '装修精品旺铺留住买家',
+                    count: 10,
+                    items: []
+                },
+                {
+                    name: '装修精品旺铺留住买家',
+                    count: 10,
+                    items: []
+                }
+            ]
+        },
+        {
+            tabName: '相关课程',
+            items: [
+                {
+                    name: '装修精品旺铺留住买家',
+                    type: 'preview',
+                    count: 1234,
+                    time: '5:00',
+                    img: './img/avatar.jpg'
+                },
+                {
+                    name: '装修精品旺铺留住买家',
+                    type: 'preview',
+                    count: 1234,
+                    time: '6:00',
+                    img: './img/avatar.jpg'
+                },
+                {
+                    name: '装修精品旺铺留住买家',
+                    type: 'preview',
+                    count: 1234,
+                    time: '6:00',
+                    img: './img/avatar.jpg'
+                },
+                {
+                    name: '装修精品旺铺留住买家',
+                    type: 'preview',
+                    count: 1234,
+                    time: '6:00',
+                    img: './img/avatar.jpg'
+                },
+                {
+                    name: '装修精品旺铺留住买家',
+                    type: 'preview',
+                    count: 1234,
+                    time: '6:00',
+                    img: './img/avatar.jpg'
+                },
+                {
+                    name: '装修精品旺铺留住买家',
+                    type: 'preview',
+                    count: 1234,
+                    time: '6:00',
+                    img: './img/avatar.jpg'
+                }
+            ]
+        }
+    ]
+};
 
 var viewport = new Viewport({
     theme: ThemeEnum.ALI1688,
@@ -28,6 +164,7 @@ var viewport = new Viewport({
                     items: [
                         {
                             type: Container,
+                            layout: 'hbox',
                             items: [
                                 {
                                     type: Player,
@@ -36,6 +173,10 @@ var viewport = new Viewport({
                                             type: StarVote
                                         }
                                     ]
+                                },
+                                {
+                                    type: Recommend,
+                                    data: recommendJsonObj
                                 }
                             ],
                             style: {
@@ -43,6 +184,7 @@ var viewport = new Viewport({
                                 horizontalAlign: 'center',
                                 width: 1185,
                                 marginBottom: 10,
+                                paddingLeft: 10,
                                 background: 'url(//cbu01.alicdn.com/cms/upload/2014/525/130/2031525_1751704920.png) no-repeat scroll -3px -300px'
                             }
                         },
@@ -208,7 +350,6 @@ var viewport = new Viewport({
                                             title: '相关课程',
                                             cls: 'last dark',
                                             style: {
-                                                height: 678,
                                                 width: 242
                                             },
                                             items: [

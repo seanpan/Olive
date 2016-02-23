@@ -3,22 +3,26 @@ var _ = require('underscore'),
 var Root = require('oliveroot');
 
 module.exports = Root.define({
-    _parseDom: function () {
-        var $itemHtmls = _.map(this.children, function (item) {
-            return item._parseDom();
+    _parseHtml: function () {
+        var itemHtmlElements = _.map(this.children, function (item) {
+            return item._parseHtml();
         });
-        var $toolHtmls = _.map(this.toolbar, function (tool) {
-            return tool._parseDom();
+        var toolHtmlElements = _.map(this.toolbar, function (tool) {
+            return tool._parseHtml();
         });
-        var $html = this._parseCurrentDom({content: $itemHtmls.join(''), toolbar: $toolHtmls.join('')});
-        return $html;
+        return this._parseCurrentHtml({itemHtmlElements: itemHtmlElements, toolHtmlElements: toolHtmlElements});
     },
-    _parseCurrentDom: function (items) {
+    _parseCurrentHtml: function (children) {
         //TODO refactor
         this._parseStyle();
-        this.content = items.content;
-        this.toolbarHtml = items.toolbar;
-        return _.template(this.tpl)(this);
+        return this.el = this._addChildren(_.template(this.tpl)(this), children);
+    },
+    _addChildren: function (current, children) {
+        //this.toolbarHtml = children.toolbar;
+        var $current = $(current);
+        $current.find('.toolbar').append(children.toolHtmlElements);
+        $current.find('.body').append(children.itemHtmlElements);
+        return $current[0];
     },
     _parseStyle: function () {
         //getRules(this);
@@ -31,6 +35,9 @@ module.exports = Root.define({
             },
             marginBottom: function (value) {
                 return 'margin-bottom: ' + value + 'px;'
+            },
+            paddingLeft: function (value) {
+                return 'padding-left: ' + value + 'px;'
             },
             horizontalAlign: function (value) {
                 switch (value) {
@@ -71,7 +78,7 @@ module.exports = Root.define({
     },
     renderTo: function (target) {
         this.parentDom = target || this.target || 'body';
-        this._render(this._parseDom());
+        this._render(this._parseHtml());
     },
     triggerAfterRender: function () {
         this.trigger('afterRender', {});

@@ -14,9 +14,10 @@ var Root = require('oliveroot');
             Avatar: require('./component/widget/field/avatar/avatar.js'),
             Preview: require('./component/widget/field/preview/preview.js'),
             Player: require('./component/widget/field/player/player.js'),
+            Recommend: require('./component/widget/field/recommend/recommend.js'),
             StarVote: require('./component/widget/field/starVote/starVote.js'),
             Container: require('./component/container/container.js'),
-            Viewport: require('./component/container/viewport.js'),
+            Viewport: require('./component/container/viewport/viewport.js'),
             Panel: require('./component/container/panel/panel.js'),
             Form: require('./component/container/form.js')
         }

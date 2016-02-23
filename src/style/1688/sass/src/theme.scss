@@ -1,4 +1,4 @@
-@import "./vars.scss";
+@import "../../../vars.scss";
 
 body {
   font: $globalFont;
@@ -29,42 +29,6 @@ em {
   }
   .panelBody {
     padding: 20px 20px;
-  }
-}
-
-.header {
-  position: relative;
-  height: 37px;
-  border-bottom: 1px solid $borderColorLight;
-
-  .title {
-    position: relative;
-    display: inline-block;
-
-    .orangeLine {
-      background-color: $colorOrange;
-      font-size: 0;
-      height: 2px;
-      position: absolute;
-      top: -2px;
-      width: 100%;
-    }
-
-    .titleContent {
-      margin: 10px 12px 10px 25px;
-      color: rgb(236, 104, 70);
-      font: 16px/16px 'Microsoft YaHei', Tahoma, Arial, 宋体, sans-serif;
-      font-weight: 700;
-    }
-
-    .seperator {
-      background-color: $borderColorLight;
-      height: 15px;
-      position: absolute;
-      right: 0;
-      top: 15px;
-      width: 1px;
-    }
   }
 }
 

@@ -9,7 +9,7 @@
         <div class="link"><%=obj.options.moreBtn%></div>
         <%}%>
     </div>
-    <div class="panelBody">
+    <div class="panelBody body">
         <%= obj.content %>
     </div>
 </div>

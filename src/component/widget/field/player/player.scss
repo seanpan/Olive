@@ -1,10 +1,10 @@
-@import "../../../../style/1688/sass/src/vars.scss";
+@import "../../../../style/vars.scss";
 
 .field {
   &.player {
-    width: 1200px;
+    width: 930px;
     height: 470px;
-    padding-left: 10px;
+    //padding-left: 10px;
     .player_left_part {
       float: left;
     }

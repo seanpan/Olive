@@ -3,9 +3,6 @@
         <div class="player_body_wrapper">
             <div id="<%= obj.id+'_player' %>" class="player_body"></div>
         </div>
-        <%= obj.toolbarHtml %>
+        <div class="toolbar"><%= obj.toolbarHtml %></div>
     </div>
-</div>
-<div class="player_recommend">
-
 </div>

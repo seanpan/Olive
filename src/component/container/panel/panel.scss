@@ -1,14 +1,50 @@
+@import "../../../style/vars.scss";
+
 .panel {
   background-color: #fff;
   .container {
     margin-bottom: 20px;
   }
-  .header{
+  .header {
+    position: relative;
+    height: 37px;
+    border-bottom: 1px solid $borderColorLight;
+
     .link {
       position: absolute;
       right: 15px;
       top: 8px;
       color: #999;
+    }
+
+    .title {
+      position: relative;
+      display: inline-block;
+
+      .orangeLine {
+        background-color: $mainColor;
+        font-size: 0;
+        height: 2px;
+        position: absolute;
+        top: -2px;
+        width: 100%;
+      }
+
+      .titleContent {
+        margin: 10px 12px 10px 25px;
+        color: $mainColor;
+        font: 16px/16px 'Microsoft YaHei', Tahoma, Arial, 宋体, sans-serif;
+        font-weight: 700;
+      }
+
+      .seperator {
+        background-color: $borderColorLight;
+        height: 15px;
+        position: absolute;
+        right: 0;
+        top: 15px;
+        width: 1px;
+      }
     }
   }
 }
