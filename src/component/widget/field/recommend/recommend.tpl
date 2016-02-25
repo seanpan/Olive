@@ -5,7 +5,7 @@
         <% }) %>
     </div>
     <% _.each(obj.options.data.data, function(item, index){ %>
-    <div class="nano recommend_content<%= obj.options.data.activeIndex!==index?' hidden': '' %>">
+    <div class="nano recommend_content<%= obj.options.data.activeIndex!==index?' olive-hidden': '' %>">
         <div class="nano-content">
             <% _.each(item.items, function(item, index){ %>
 
@@ -32,7 +32,8 @@
                             <div class="recommend_content_item_expand"></div>
                         </div>
                     </div>
-                    <div class="recommend_content_item_detail hidden">
+                    <div class="recommend_content_item_detail olive-hidden">
+                        <div class="triangle"></div>
                         <% _.each(item.items, function(item, index){ %>
                         <% if (item.items){ %>
                         <div class="summary"><%= item.name %></div>

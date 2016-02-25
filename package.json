@@ -1,6 +1,6 @@
 {
   "name": "olive",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A H5 RIA builder.",
   "main": "olive.js",
   "scripts": {

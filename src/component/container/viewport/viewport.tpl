@@ -1,1 +1,3 @@
-<div class="viewport-wrapper"><div class="viewport body <%= obj.theme %>"><%= obj.content %></div></div>
+<div class="olive-viewport-wrapper <%= obj.options.cls %><%= obj.options.responsive?' rwd':'' %>">
+    <div class="olive-viewport body <%= obj.theme %>" style="<%= obj.parsedStyle %>"><%= obj.content %></div>
+</div>

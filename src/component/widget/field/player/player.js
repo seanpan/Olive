@@ -22,11 +22,11 @@ module.exports = Root.define({
         if (window.tb_player_object) {
             tb_player_object.embedPlayer({
                 "div": this.id + '_player',
-                "height": "414px",
+                "height": "100%",
                 "tid": "1",
                 "uid": "1010230267",
                 "vid": "34303971",
-                "width": "930px"
+                "width": "100%"
             }, {
                 "autoplay": false
             }, {

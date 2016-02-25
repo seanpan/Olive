@@ -2,7 +2,7 @@
 
 .field {
   &.recommend {
-    width: 236px;
+    //width: 236px;
     height: 466px;
     background-color: #3F3B38;
     overflow: hidden;
@@ -10,7 +10,7 @@
       height: 38px;
       .recommend_tab {
         height: 38px;
-        width: 118px;
+        width: 120px;
         float: left;
         background-color: #2D2926;
         cursor: pointer;
@@ -30,7 +30,7 @@
       }
     }
     .recommend_content {
-      width: 236px;
+      width: 240px;
       height: 428px;
       position: relative;
       &.hidden {
@@ -112,9 +112,24 @@
           }
         }
         .recommend_content_item_detail {
+          position: relative;
           background-color: #2D2925;
           color: #b3b3b3;
           padding: 15px 20px 1px 20px;
+          .triangle {
+            border-style: solid;
+            border-width: 0 5px 5px 5px;
+            color: #FFF;
+            font-size: 0;
+            height: 0;
+            line-height: 0;
+            margin: 0 auto;
+            width: 0;
+            border-color: transparent transparent #2D2925 transparent;
+            position: absolute;
+            right: 22px;
+            top: -5px;
+          }
           .summary {
             font-weight: bold;
             margin-bottom: 15px;
@@ -148,7 +163,7 @@
               top: 0;
             }
           }
-          &.hidden {
+          &.olive-hidden {
             display: none;
           }
         }

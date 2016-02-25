@@ -8,7 +8,7 @@
     </a>
 
     <div class="previewBottom">
-        <span class="mod-star"><em class="progress" style="width:88.0%"></em><em class="star"></em></span>
+        <span class="mod-star"><em class="olive-progress" style="width:88.0%"></em><em class="star"></em></span>
         <span class="score"><%=obj.options.data.score%>分</span><span class="study-count"><%=obj.options.data.studyCount%>已学</span>
     </div>
 </div>

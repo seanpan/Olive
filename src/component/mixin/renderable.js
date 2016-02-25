@@ -21,7 +21,9 @@ module.exports = Root.define({
         //this.toolbarHtml = children.toolbar;
         var $current = $(current);
         $current.find('.toolbar').append(children.toolHtmlElements);
-        $current.find('.body').append(children.itemHtmlElements);
+        var $body = $current.find('.body');
+        $body.append(children.itemHtmlElements);
+        $body.append($body.children('.clear'));
         return $current[0];
     },
     _parseStyle: function () {
