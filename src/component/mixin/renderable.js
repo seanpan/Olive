@@ -14,12 +14,19 @@ module.exports = Root.define({
         return this._parseCurrentHtml({itemHtmlElements: itemHtmlElements, toolHtmlElements: toolHtmlElements});
     },
     _parseCurrentHtml: function (children) {
+        this._parseCustomizedStyle();
         //TODO refactor
-        this._parseStyle();
         var el = this._addChildren(this._setComment(_.template(this.tpl)(this)), children);
+        this._setStandardStyle(el);
         this._setId(el);
         this._setClass(el);
         return this.el = el;
+    },
+    _setStandardStyle: function (el) {
+        var style = el.style;
+        _.each(this.options.style, function (value, key) {
+            style[key] = (_.isNumber(value) ? (value + 'px') : value);
+        })
     },
     _setComment: function (html) {
         //TODO
@@ -40,30 +47,31 @@ module.exports = Root.define({
         $body.append($body.children('.clear'));
         return $current[0];
     },
-    _parseStyle: function () {
+    //todo this is an old implementation, I'm going to rewrite, and prepare to fallback
+    _parseCustomizedStyle: function () {
         //getRules(this);
         var rules = {
-            float: function (value) {
-                return 'float: ' + value + ';';
-            },
-            lineHeight: function (value) {
-                return 'line-height: ' + value + 'px;';
-            },
-            marginLeft: function (value) {
-                return 'margin-left: ' + value + 'px;'
-            },
-            marginRight: function (value) {
-                return 'margin-right: ' + value + 'px;'
-            },
-            marginBottom: function (value) {
-                return 'margin-bottom: ' + value + 'px;'
-            },
-            marginTop: function (value) {
-                return 'margin-top: ' + value + 'px;'
-            },
-            paddingLeft: function (value) {
-                return 'padding-left: ' + value + 'px;'
-            },
+            //float: function (value) {
+            //    return 'float: ' + value + ';';
+            //},
+            //lineHeight: function (value) {
+            //    return 'line-height: ' + value + 'px;';
+            //},
+            //marginLeft: function (value) {
+            //    return 'margin-left: ' + value + 'px;'
+            //},
+            //marginRight: function (value) {
+            //    return 'margin-right: ' + value + 'px;'
+            //},
+            //marginBottom: function (value) {
+            //    return 'margin-bottom: ' + value + 'px;'
+            //},
+            //marginTop: function (value) {
+            //    return 'margin-top: ' + value + 'px;'
+            //},
+            //paddingLeft: function (value) {
+            //    return 'padding-left: ' + value + 'px;'
+            //},
             horizontalAlign: function (value) {
                 switch (value) {
                     case 'center':
@@ -76,15 +84,15 @@ module.exports = Root.define({
                         return '';
                 }
             },
-            backgroundColor: function (value) {
-                return 'background-color: ' + value + ';';
-            },
-            borderRight: function (value) {
-                return 'border-right: ' + value + ';';
-            },
-            background: function (value) {
-                return 'background: ' + value + ';';
-            }
+            //backgroundColor: function (value) {
+            //    return 'background-color: ' + value + ';';
+            //},
+            //borderRight: function (value) {
+            //    return 'border-right: ' + value + ';';
+            //},
+            //background: function (value) {
+            //    return 'background: ' + value + ';';
+            //}
         };
         var parsedStyle = '';
         _.each(this.options.style, function (value, key) {
@@ -120,6 +128,7 @@ module.exports = Root.define({
         }
         this.triggerAfterRender();
     },
+    //todo deprecated
     renderToString: function () {
         if (OENV === 'node') {
             var fs = require('fs');
