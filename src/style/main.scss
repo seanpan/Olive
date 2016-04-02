@@ -1,4 +1,4 @@
-@import "../../../vars.scss";
+@import "./theme/1688/vars.scss";
 
 body {
   font: $globalFont;
@@ -19,21 +19,6 @@ em {
 
 .hbox > div {
   float: left;
-}
-
-.panel {
-  border-top: 2px solid $borderColorDark;
-  border-bottom: 1px solid $borderColorLight;
-  border-left: 1px solid $borderColorLight;
-  &.last {
-    border-right: 1px solid $borderColorLight;
-  }
-  &.dark {
-    background-color: $darkBackground;
-  }
-  .panelBody {
-    padding: 20px 20px;
-  }
 }
 
 .triangle-outer {

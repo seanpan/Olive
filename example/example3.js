@@ -1,4 +1,3 @@
-var ThemeEnum = Olive.theme.ThemeEnum;
 var Container = Olive.components.Container;
 var Viewport = Olive.components.Viewport;
 var Text = Olive.components.Text;
@@ -9,395 +8,53 @@ var Player = Olive.components.Player;
 var Recommend = Olive.components.Recommend;
 var StarVote = Olive.components.StarVote;
 var Panel = Olive.components.Panel;
-
-//Ternary Binary HBox VBox
-
-var recommendJsonObj = {
-    activeIndex: 0,
-    data: [
-        {
-            tabName: '相关系列课',
-            items: [
-                {
-                    name: '装修精品旺铺留住买家',
-                    count: 10,
-                    items: [
-                        {
-                            name: '一.SEO的概念',
-                            items: [
-                                {
-                                    name: '讲师介绍',
-                                    time: '12:00'
-                                },
-                                {
-                                    name: '讲师介绍二',
-                                    time: '12:00'
-                                }
-                            ]
-                        },
-                        {
-                            name: '二.SEO的概念',
-                            items: [
-                                {
-                                    name: '讲师介绍',
-                                    time: '12:00'
-                                },
-                                {
-                                    name: '讲师介绍二',
-                                    time: '12:00'
-                                }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    name: '装修精品旺铺留住买家',
-                    count: 10,
-                    items: [
-                        {
-                            name: '讲师介绍',
-                            time: '12:00'
-                        },
-                        {
-                            name: '讲师介绍',
-                            time: '12:00'
-                        }
-                    ]
-                },
-                {
-                    name: '装修精品旺铺留住买家',
-                    count: 10,
-                    items: []
-                },
-                {
-                    name: '装修精品旺铺留住买家',
-                    count: 10,
-                    items: []
-                },
-                {
-                    name: '装修精品旺铺留住买家',
-                    count: 10,
-                    items: []
-                },
-                {
-                    name: '装修精品旺铺留住买家',
-                    count: 10,
-                    items: []
-                },
-                {
-                    name: '装修精品旺铺留住买家',
-                    count: 10,
-                    items: []
-                },
-                {
-                    name: '装修精品旺铺留住买家',
-                    count: 10,
-                    items: []
-                }
-            ]
-        },
-        {
-            tabName: '相关课程',
-            items: [
-                {
-                    name: '装修精品旺铺留住买家',
-                    type: 'preview',
-                    count: 1234,
-                    time: '5:00',
-                    img: './img/avatar.jpg'
-                },
-                {
-                    name: '装修精品旺铺留住买家',
-                    type: 'preview',
-                    count: 1234,
-                    time: '6:00',
-                    img: './img/avatar.jpg'
-                },
-                {
-                    name: '装修精品旺铺留住买家',
-                    type: 'preview',
-                    count: 1234,
-                    time: '6:00',
-                    img: './img/avatar.jpg'
-                },
-                {
-                    name: '装修精品旺铺留住买家',
-                    type: 'preview',
-                    count: 1234,
-                    time: '6:00',
-                    img: './img/avatar.jpg'
-                },
-                {
-                    name: '装修精品旺铺留住买家',
-                    type: 'preview',
-                    count: 1234,
-                    time: '6:00',
-                    img: './img/avatar.jpg'
-                },
-                {
-                    name: '装修精品旺铺留住买家',
-                    type: 'preview',
-                    count: 1234,
-                    time: '6:00',
-                    img: './img/avatar.jpg'
-                }
-            ]
-        }
-    ]
-};
-
+var Table = Olive.components.Table;
+var Button = Olive.components.Button;
 
 var viewport = new Viewport({
-    theme: ThemeEnum.ALI1688,
     responsive: true,
-    style: {
-        background: 'url(//cbu01.alicdn.com/cms/upload/2013/873/368/1863378_1867113056.png) repeat center 0'
-    },
     items: [
         {
             type: Container,
             cls: 'container',
             style: {
-                background: 'url(//cbu01.alicdn.com/cms/upload/2013/873/368/1863378_1867113056.png) repeat center 0'
+                padding: 5
             },
             items: [
                 {
-                    type: Container,
-                    cls: 'row',
-                    items: [
-                        {
-                            type: Container,
-                            cls: 'col-xs-60',
-                            items: [
-                                {
-                                    type: Container,
-                                    cls: 'col-offset-r-fixed-s-12',
-                                    items:[
-                                        {
-                                            type: Player,
-                                            //TODO a plugin to force ration when load or resize page
-                                            forceRatio: true,
-                                            toolbar: [
-                                                {
-                                                    type: StarVote
-                                                }
-                                            ]
-                                        }
-                                    ]
-                                }
-                            ],
-                            style: {
-                                height: 480
-                            }
-                        },
-                        {
-                            type: Container,
-                            cls: 'hidden-xxs hidden-xs col-fixed-s-12 sub-right-s-12',
-                            items: [
-                                {
-                                    type: Recommend,
-                                    data: recommendJsonObj
-                                }
-                            ],
-                            style: {
-                                height: 480
-                            }
-                        }
-                    ]
+                    type: Text,
+                    data: '温馨提示:',
+                    style: {
+                        color: '#ff6600',
+                        marginBottom: 5
+                    }
                 },
                 {
-                    type: Container,
-                    cls: 'row',
-                    items: [
-                        {
-                            type: Container,
-                            cls: 'col-xs-60 col-s-45',
-                            items: [
-                                {
-                                    type: Panel,
-                                    title: '装修精品旺铺留住买家',
-                                    style: {
-                                        height: 217
-                                    },
-                                    items: [
-                                        {
-                                            type: Container,
-                                            layout: 'hbox',
-                                            items: [
-                                                {
-                                                    type: Text,
-                                                    label: '学习人数',
-                                                    data: 888,
-                                                    style: {
-                                                        marginRight: 30
-                                                    }
-                                                },
-                                                {
-                                                    type: Text,
-                                                    label: '收藏人数',
-                                                    data: 526,
-                                                    style: {
-                                                        marginRight: 30
-                                                    }
-                                                },
-                                                {
-                                                    type: Text,
-                                                    label: '学员评分',
-                                                    data: '5分'
-                                                }
-                                                ,
-                                                {
-                                                    type: Text,
-                                                    label: '发布时间',
-                                                    data: '2015-09-30',
-                                                    style: {
-                                                        horizontalAlign: 'right'
-                                                    }
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            type: Container,
-                                            items: [
-                                                {
-                                                    type: Text,
-                                                    label: '课程简介',
-                                                    labelAlign: 'top',
-                                                    style: {
-                                                        lineHeight: 18,
-                                                        height: 76
-                                                    },
-                                                    data: '央行的网络支付新规,央行的网络支付新规,央行的网络支付新规,央行的网络支付新规,央行的网络支付新规,央行的网络支付新规,央行的网络支付新规,央行的网络支付新规,央行的网络支付新规,央行的网络支付新规,央行的网络支付新规,央行的网络支付新规,央行的网络支付新规,央行的网络支付新规,央行的网络支付新规,央行的网络支付新规,央行的网络支付新规,央行的网络支付新规,央行的网络支付新规,央行的网络支付新规,央行的网络支付新规,央行的网络支付新规,央行的网络支付新规,'
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            type: Container,
-                                            items: [
-                                                {
-                                                    type: Link,
-                                                    label: '标签',
-                                                    underline: true,
-                                                    data: ['网络支付', '店铺自诊', '理财']
-                                                }
-                                            ]
-                                        }
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            type: Container,
-                            cls: 'col-xs-60 col-s-15',
-                            items: [
-                                {
-                                    type: Panel,
-                                    cls: 'last',
-                                    title: '说说您的观点',
-                                    style: {
-                                        height: 217
-                                    },
-                                    items: []
-                                }
-                            ]
-                        }
-                    ]
+                    type: Text,
+                    data: '以下列表中的所有考试均可报名参考，点击“去考试”按钮可开始考试。测试后的分数将在考试记录看到。',
+                    style: {
+                        marginBottom: 10
+                    }
                 },
                 {
-                    type: Container,
-                    cls: 'row',
-                    items: [
+                    type: Table,
+                    data: [
+                        [
+                            '考试名称',
+                            '考试时间',
+                            '考试时长',
+                            '操作'
+                        ],
+                        [
+                            '温州鞋操盘商入驻考试',
+                            '2016/02/16 19:39 - 2019/02/26 19:39',
+                            '60分钟'
+                        ]
+                    ],
+                    tool: [
                         {
-                            type: Container,
-                            cls: 'col-xs-60 col-s-45',
-                            items: [
-                                {
-                                    type: Panel,
-                                    title: '装修精品旺铺留住买家',
-                                    style: {
-                                        height: 600
-                                    },
-                                    items: [
-                                        {
-                                            type: Container,
-                                            layout: 'hbox',
-                                            items: [
-                                                {
-                                                    type: Text,
-                                                    label: '学习人数',
-                                                    data: 888,
-                                                    style: {
-                                                        marginRight: 30
-                                                    }
-                                                },
-                                                {
-                                                    type: Text,
-                                                    label: '收藏人数',
-                                                    data: 526,
-                                                    style: {
-                                                        marginRight: 30
-                                                    }
-                                                },
-                                                {
-                                                    type: Text,
-                                                    label: '学员评分',
-                                                    data: '5分'
-                                                }
-                                                ,
-                                                {
-                                                    type: Text,
-                                                    label: '发布时间',
-                                                    data: '2015-09-30',
-                                                    style: {
-                                                        horizontalAlign: 'right'
-                                                    }
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            type: Container,
-                                            items: [
-                                                {
-                                                    type: Text,
-                                                    label: '课程简介',
-                                                    labelAlign: 'top',
-                                                    style: {
-                                                        lineHeight: 18,
-                                                        height: 76
-                                                    },
-                                                    data: '央行的网络支付新规,央行的网络支付新规,央行的网络支付新规,央行的网络支付新规,央行的网络支付新规,央行的网络支付新规,央行的网络支付新规,央行的网络支付新规,央行的网络支付新规,央行的网络支付新规,央行的网络支付新规,央行的网络支付新规,央行的网络支付新规,央行的网络支付新规,央行的网络支付新规,央行的网络支付新规,央行的网络支付新规,央行的网络支付新规,央行的网络支付新规,央行的网络支付新规,央行的网络支付新规,央行的网络支付新规,央行的网络支付新规,'
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            type: Container,
-                                            items: [
-                                                {
-                                                    type: Link,
-                                                    label: '标签',
-                                                    underline: true,
-                                                    data: ['网络支付', '店铺自诊', '理财']
-                                                }
-                                            ]
-                                        }
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            type: Container,
-                            cls: 'col-xs-60 col-s-15',
-                            items: [
-                                {
-                                    type: Panel,
-                                    cls: 'last',
-                                    title: '说说您的观点',
-                                    style: {
-                                        height: 600
-                                    },
-                                    items: []
-                                }
-                            ]
+                            type: Button,
+                            text: '去考试'
                         }
                     ]
                 }

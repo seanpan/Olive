@@ -50,9 +50,11 @@
 	__webpack_require__(1);
 
 	__webpack_require__(2);
+
+	//style
 	__webpack_require__(977);
 	__webpack_require__(979);
-
+	__webpack_require__(986);
 
 /***/ },
 /* 1 */
@@ -191947,7 +191949,6 @@
 	__webpack_require__(984);
 	//require('../style/lib/apollo-rwd-ie8.min.css');
 	//require('../style/lib/apollo-rwd-ie8-seo.min.css');
-	__webpack_require__(986);
 
 /***/ },
 /* 980 */
