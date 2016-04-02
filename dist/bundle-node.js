@@ -50,11 +50,14 @@
 	__webpack_require__(1);
 
 	__webpack_require__(2);
+	//require('./src/app.js');
 
 	//style
 	__webpack_require__(977);
 	__webpack_require__(979);
 	__webpack_require__(986);
+	__webpack_require__(988);
+
 
 /***/ },
 /* 1 */
@@ -190285,7 +190288,7 @@
 /* 906 */
 /***/ function(module, exports) {
 
-	module.exports = "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"./dist/main.css\">\n    <script src=\"//api.video.taobao.com/video/getPlayerJS\"></script>\n    <title></title>\n</head>\n<body data-state=\"rendered\">\n<%= obj.body %>\n<!--<script src=\"//api.video.taobao.com/video/getPlayerJS\"></script>-->\n<script src=\"./dist/commons.chunk.js\"></script>\n<script src=\"./dist/bundle-browser.js\"></script>\n</body>\n</html>"
+	module.exports = "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"../dist/main.css\">\n    <script src=\"//api.video.taobao.com/video/getPlayerJS\"></script>\n    <title></title>\n</head>\n<body data-state=\"rendered\">\n<%= obj.body %>\n<!--<script src=\"//api.video.taobao.com/video/getPlayerJS\"></script>-->\n<script src=\"../dist/commons.chunk.js\"></script>\n<script src=\"../dist/bundle-browser.js\"></script>\n</body>\n</html>"
 
 /***/ },
 /* 907 */
@@ -191795,7 +191798,7 @@
 /* 960 */
 /***/ function(module, exports) {
 
-	module.exports = "<div>\n    <div class=\"o-container body<%= obj.options.layout==='hbox'?' hbox':'' %> <%= obj.options.cls %> clearfix\" style=\"<%= obj.parsedStyle %>\">\n        <%= obj.options.html %>\n    </div>\n</div>"
+	module.exports = "<div>\n    <div class=\"o-container body<%= obj.options.layout==='hbox'?' hbox':'' %> clearfix\" style=\"<%= obj.parsedStyle %>\">\n        <%= obj.options.html %>\n    </div>\n</div>"
 
 /***/ },
 /* 961 */
@@ -191973,6 +191976,13 @@
 /***/ },
 /* 985 */,
 /* 986 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 987 */,
+/* 988 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
