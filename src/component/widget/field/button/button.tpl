@@ -1,0 +1,1 @@
+<button id="<%= obj.id %>" class="<%= obj.theme %> button">Button</button>

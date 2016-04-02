@@ -6,7 +6,6 @@ var Component = require('../../../component.js');
 var tpl = require('./recommend.tpl');
 require('./recommend.scss');
 require('./nanoScroller/bin/css/nanoscroller.css');
-require('./nanoScroller/bin/javascripts/jquery.nanoscroller.js');
 
 module.exports = Root.define({
     extend: Component,
@@ -15,11 +14,12 @@ module.exports = Root.define({
         this.callParent();
     },
     afterRender: function () {
+        require('./nanoScroller/bin/javascripts/jquery.nanoscroller.js');
         this.initInteraction();
         this.initScroller();
     },
     initInteraction: function () {
-        var $el = $(this.el);
+        var $el = $('#' + this.id);
         $el.on('click', '.recommend_tab:not(.active)', function () {
             var tabs = $('.recommend_tab');
             tabs.removeClass('active');
@@ -39,7 +39,7 @@ module.exports = Root.define({
         });
     },
     initScroller: function () {
-        var $el = $(this.el)
+        var $el = $('#' + this.id);
         $el.find('.nano').each(function (index, item) {
             $(item).nanoScroller();
         });

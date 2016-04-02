@@ -15,9 +15,9 @@
     a {
       cursor: pointer;
       margin-right: 12px;
-      &.highLight {
-        color: $highLightLinkColor;
-      }
+    }
+    &.highLight a{
+      color: $highLightLinkColor;
     }
   }
 }

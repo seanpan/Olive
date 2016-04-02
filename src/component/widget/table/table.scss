@@ -1,0 +1,40 @@
+@import "../../../style/vars.scss";
+
+.olive-table {
+  table {
+    width: 100%;
+    border: 1px solid #ccc;;
+    border-top: 2px solid #ff6600;
+    thead {
+      color: #999;
+      tr {
+        height: 40px;
+        border-bottom: 1px solid #ccc;
+        th {
+          white-space: nowrap;
+        }
+      }
+    }
+    tbody {
+      tr {
+        height: 30px;
+        border-bottom: 1px solid #ccc;
+        &:hover {
+          background-color: #f6f6f6;
+        }
+        td {
+          text-align: center;
+          padding: 2px;
+          //white-space: nowrap;
+          //overflow: hidden;
+          //text-overflow: ellipsis;
+          button {
+            background: #ff6600;
+            color: #fff;
+            border: none;
+          }
+        }
+      }
+    }
+  }
+}

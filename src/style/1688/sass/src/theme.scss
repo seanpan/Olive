@@ -8,9 +8,13 @@ em {
   font-style: normal;
 }
 
-.clear {
-  float: none !important;
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  visibility: hidden;
   clear: both;
+  zoom: 1;
 }
 
 .hbox > div {

@@ -1,0 +1,11 @@
+#!/usr/bin/env node
+var shell = require("shelljs");
+var argv = require('yargs').alias('m', 'mode').argv;
+
+if(argv.m==='seo'){
+    shell.exec("webpack --config webpack.config.seo.js");
+    shell.exec("node ./dist/bundle-node.js");
+}
+else{
+    shell.exec("webpack --config webpack.config.js");
+}

@@ -9,16 +9,24 @@ module.exports = Root.define({
     },
     _addEventHooks: function () {
         var self = this;
-        this.bind('afterRender', function () {
-            _.isFunction(self.afterRender) && self.afterRender();
-        });
+        if (OENV !== 'node') {
+            this.bind('afterRender', function () {
+                _.isFunction(self.afterRender) && self.afterRender();
+            });
+        }
+        //else {
+        //    if (_.isFunction(self.afterRender)) {
+        //        console.log(self.afterRender.toString());
+        //    }
+        //}
     },
     _registerEvents: function () {
         var self = this;
-        //TODO concern...
-        var $doc = $(document);
-        _.each(this.options.listeners, function (callback, key) {
-            $doc.on(key, '#' + self.id, callback);
-        });
+        if (OENV !== 'node') {
+            var $doc = $(document);
+            _.each(this.options.listeners, function (callback, key) {
+                $doc.on(key, '#' + self.id, callback);
+            });
+        }
     }
 });

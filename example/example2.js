@@ -1,4 +1,4 @@
-var ThemeEnum = Olive.theme.ThemeEnum;
+//var ThemeEnum = Olive.theme.ThemeEnum;
 var Container = Olive.components.Container;
 var Viewport = Olive.components.Viewport;
 var Text = Olive.components.Text;
@@ -148,7 +148,7 @@ var recommendJsonObj = {
 };
 
 var viewport = new Viewport({
-    theme: ThemeEnum.ALI1688,
+    //theme: ThemeEnum.ALI1688,
     items: [
         {
             type: Container,

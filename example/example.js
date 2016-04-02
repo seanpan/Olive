@@ -1,17 +1,16 @@
-var ThemeEnum = Olive.theme.ThemeEnum;
-var Container = Olive.components.Container;
-var Viewport = Olive.components.Viewport;
-var Text = Olive.components.Text;
-var Link = Olive.components.Link;
-var Avatar = Olive.components.Avatar;
-var Preview = Olive.components.Preview;
-var Player = Olive.components.Player;
-var Recommend = Olive.components.Recommend;
-var StarVote = Olive.components.StarVote;
-var Panel = Olive.components.Panel;
+var comps = require('../src/app.js').components;
 
-//Ternary Binary HBox VBox
-
+var Container = comps.Container;
+var Viewport = comps.Viewport;
+var Text = comps.Text;
+var Link = comps.Link;
+var Avatar = comps.Avatar;
+var Preview = comps.Preview;
+var Player = comps.Player;
+var Recommend = comps.Recommend;
+var StarVote = comps.StarVote;
+var VideoTool = comps.VideoTool;
+var Panel = comps.Panel;
 
 var recommendJsonObj = {
     activeIndex: 0,
@@ -148,32 +147,38 @@ var recommendJsonObj = {
 };
 
 var viewport = new Viewport({
-    theme: ThemeEnum.ALI1688,
     items: [
         {
             type: Container,
-            style: {
-                background: 'url(//cbu01.alicdn.com/cms/upload/2013/873/368/1863378_1867113056.png) repeat center 0'
-            },
             items: [
                 {
                     type: Container,
-                    style: {
-                        background: 'url(//cbu01.alicdn.com/cms/upload/2014/671/088/1880176_1867113056.png) repeat center 0'
-                    },
                     items: [
                         {
                             type: Container,
                             layout: 'hbox',
                             items: [
+                                //{
+                                //    type: Recommend,
+                                //    data: recommendJsonObj
+                                //},
                                 {
                                     type: Player,
                                     style: {
                                         width: 930
                                     },
+                                    cls: 'o-player',
                                     toolbar: [
                                         {
                                             type: StarVote
+                                        },
+                                        {
+                                            type: VideoTool,
+                                            style: {
+                                                float: 'right',
+                                                marginRight: 30,
+                                                marginTop: 3
+                                            }
                                         }
                                     ]
                                 },
@@ -273,6 +278,7 @@ var viewport = new Viewport({
                                 },
                                 {
                                     type: Panel,
+                                    id: 'teacher-summary',
                                     cls: 'last dark',
                                     title: '讲师简介',
                                     style: {
@@ -312,7 +318,7 @@ var viewport = new Viewport({
                                                             data: '了解更多&gt;',
                                                             listeners: {
                                                                 click: function () {
-                                                                    console.log(this);
+                                                                    alert('You clicked a link.');
                                                                 }
                                                             }
                                                         }
@@ -446,9 +452,15 @@ var viewport = new Viewport({
 
                             ]
                         }
-                    ]
+                    ],
+                    style: {
+                        background: 'url(//cbu01.alicdn.com/cms/upload/2014/671/088/1880176_1867113056.png) repeat center 0'
+                    }
                 }
-            ]
+            ],
+            style: {
+                background: 'url(//cbu01.alicdn.com/cms/upload/2013/873/368/1863378_1867113056.png) repeat center 0'
+            }
         }
     ]
 });

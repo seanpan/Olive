@@ -1,0 +1,10 @@
+{
+  "name": "olive",
+  "bin": {
+    "olive": "olive"
+  },
+  "dependencies": {
+    "shelljs": "~0.6.0",
+    "yargs": "~4.3.2"
+  }
+}

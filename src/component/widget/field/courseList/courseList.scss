@@ -1,0 +1,88 @@
+@import "../../../../style/vars.scss";
+
+.field {
+  &.courseList {
+    .separator {
+      height: 1px;
+      border-top: 1px solid;
+      margin: 36px 10px 50px 10px;
+      border-color: #EAEAEA;
+    }
+    .summaryTitle {
+      margin-left: 30px;
+      font: 16px/16px Microsoft YaHei, Tahoma, Arial, 宋体, sans-serif;
+      color: #3c3c3c;
+      font-weight: bold;
+      margin-bottom: 16px;
+    }
+    .courseItemWrapper {
+      padding-left: 30px;
+      padding-right: 30px;
+      cursor: pointer;
+      &:hover {
+        background-color: #F9F9F9;
+      }
+    }
+    .courseItem {
+      line-height: 40px;
+      color: #3c3c3c;
+      .icon-span {
+        margin-left: 20px;
+      }
+      .icon-camera {
+        display: inline-block;
+        width: 18px;
+        height: 11px;
+        background: url('./camera.png') no-repeat;
+      }
+      .duration {
+        color: #999;
+        margin-left: 5px;
+      }
+      .btn {
+        color: #FFF;
+        text-decoration: none;
+        background: url('./gotoBtn.png') no-repeat -7px -15px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        width: 84px;
+        display: block;
+        float: right;
+        margin-top: 5px;
+        &:hover {
+          background-position: -213px -15px;
+        }
+      }
+      .state {
+        float: right;
+        margin-right: 30px;
+        &.paused {
+          color: #999;
+          .pause-time {
+            margin-left: 5px;
+            color: #ec6846;
+          }
+        }
+        &.incomplete {
+          color: #999;
+        }
+        &.complete {
+          color: #2ac1ba;
+        }
+      }
+    }
+    .index-block {
+      float: left;
+      width: 13px;
+      height: 13px;
+      background-color: #2ac1ba;
+      line-height: 12px;
+      text-align: center;
+      color: #fff;
+      margin-right: 10px;
+      margin-top: 14px;
+    }
+
+  }
+}

@@ -1,5 +1,5 @@
-var _ = require('underscore'),
-    $ = require('jquery');
+var _ = require('underscore');
+var $ = (OENV === 'node' ? require('jquery')(require('jsdom').jsdom().defaultView) : require('jquery'));
 var Root = require('oliveroot');
 
 module.exports = Root.define({
@@ -10,12 +10,26 @@ module.exports = Root.define({
         var toolHtmlElements = _.map(this.toolbar, function (tool) {
             return tool._parseHtml();
         });
+        //return html element
         return this._parseCurrentHtml({itemHtmlElements: itemHtmlElements, toolHtmlElements: toolHtmlElements});
     },
     _parseCurrentHtml: function (children) {
         //TODO refactor
         this._parseStyle();
-        return this.el = this._addChildren(_.template(this.tpl)(this), children);
+        var el = this._addChildren(this._setComment(_.template(this.tpl)(this)), children);
+        this._setId(el);
+        this._setClass(el);
+        return this.el = el;
+    },
+    _setComment: function (html) {
+        //TODO
+        return html;
+    },
+    _setClass: function (el) {
+        $(el).addClass(this.options.cls);
+    },
+    _setId: function (el) {
+        $(el).attr('id', this.options.id);
     },
     _addChildren: function (current, children) {
         //this.toolbarHtml = children.toolbar;
@@ -29,14 +43,23 @@ module.exports = Root.define({
     _parseStyle: function () {
         //getRules(this);
         var rules = {
+            float: function (value) {
+                return 'float: ' + value + ';';
+            },
             lineHeight: function (value) {
                 return 'line-height: ' + value + 'px;';
+            },
+            marginLeft: function (value) {
+                return 'margin-left: ' + value + 'px;'
             },
             marginRight: function (value) {
                 return 'margin-right: ' + value + 'px;'
             },
             marginBottom: function (value) {
                 return 'margin-bottom: ' + value + 'px;'
+            },
+            marginTop: function (value) {
+                return 'margin-top: ' + value + 'px;'
             },
             paddingLeft: function (value) {
                 return 'padding-left: ' + value + 'px;'
@@ -76,11 +99,39 @@ module.exports = Root.define({
     },
     _render: function (html) {
         $(this.parentDom).append(html);
-        this.triggerAfterRender();
     },
     renderTo: function (target) {
+        if (OENV === 'node') {
+            var fs = require('fs');
+            var path = require('path');
+            var tpl = require('./template.tpl');
+            var html = _.template(tpl)({
+                body: this._parseHtml().outerHTML
+            });
+            fs.writeFile(path.basename(process.argv[1], '.js') + '.html', html, function (err) {
+                console.log(err ? '生成失败!' : '生成成功!')
+            });
+            return;
+        }
         this.parentDom = target || this.target || 'body';
-        this._render(this._parseHtml());
+        var isRendered = $('body').data('state');
+        if (isRendered !== 'rendered') {
+            this._render(this._parseHtml());
+        }
+        this.triggerAfterRender();
+    },
+    renderToString: function () {
+        if (OENV === 'node') {
+            var fs = require('fs');
+            var path = require('path');
+            var tpl = require('./template.tpl');
+            var html = _.template(tpl)({
+                body: this._parseHtml().outerHTML
+            });
+            fs.writeFile(path.basename(process.argv[1], '.js') + '.html', html, function (err) {
+                console.log(err ? '生成失败!' : '生成成功!')
+            });
+        }
     },
     triggerAfterRender: function () {
         this.trigger('afterRender', {});

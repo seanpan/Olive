@@ -1,4 +1,4 @@
-<div class="panel <%= obj.options.cls %>" style="<%= obj.parsedStyle %>">
+<div class="panel" style="<%= obj.parsedStyle %>">
     <div class="header">
         <div class="title">
             <div class="orangeLine"></div>

@@ -1,0 +1,33 @@
+@import "../../../../style/vars.scss";
+
+.field {
+  &.videoTool {
+    .tool {
+      float: left;
+      height: 25px;
+      cursor: pointer;
+      display: block;
+    }
+    .bookmark {
+      background: url('./toolbar.png') no-repeat -15px -10px;
+      width: 61px;
+      &:hover {
+        background-position: -11px -79px;
+      }
+    }
+    .share {
+      background: url('./toolbar.png') no-repeat -88px -10px;
+      width: 62px;
+      &:hover {
+        background-position: -83px -80px;
+      }
+    }
+    .reportBug {
+      background: url('./toolbar.png') no-repeat -162px -10px;
+      width: 61px;
+      &:hover {
+        background-position: -157px -80px;
+      }
+    }
+  }
+}
