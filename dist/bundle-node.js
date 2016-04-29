@@ -53,10 +53,10 @@
 	//require('./src/app.js');
 
 	//style
-	__webpack_require__(977);
-	__webpack_require__(979);
-	__webpack_require__(986);
-	__webpack_require__(988);
+	__webpack_require__(981);
+	__webpack_require__(983);
+	__webpack_require__(990);
+	__webpack_require__(992);
 
 
 /***/ },
@@ -296,7 +296,9 @@
 	                                width: 1185,
 	                                marginBottom: 10,
 	                                paddingLeft: 10,
-	                                background: 'url(//cbu01.alicdn.com/cms/upload/2014/525/130/2031525_1751704920.png) no-repeat scroll -3px -300px'
+	                                backgroundImage: 'url(//cbu01.alicdn.com/cms/upload/2014/525/130/2031525_1751704920.png)',
+	                                backgroundPositionX: -3,
+	                                backgroundPositionY: -300
 	                            }
 	                        },
 	                        {
@@ -600,7 +602,8 @@
 	            Panel: __webpack_require__(963),
 	            Hero: __webpack_require__(967),
 	            Form: __webpack_require__(972),
-	            Table: __webpack_require__(973)
+	            Table: __webpack_require__(973),
+	            Tab: __webpack_require__(977)
 	        }
 	    };
 	    module.exports = global.Olive = Olive;
@@ -12158,12 +12161,19 @@
 	        return this._parseCurrentHtml({itemHtmlElements: itemHtmlElements, toolHtmlElements: toolHtmlElements});
 	    },
 	    _parseCurrentHtml: function (children) {
+	        this._parseCustomizedStyle();
 	        //TODO refactor
-	        this._parseStyle();
 	        var el = this._addChildren(this._setComment(_.template(this.tpl)(this)), children);
+	        this._setStandardStyle(el);
 	        this._setId(el);
 	        this._setClass(el);
 	        return this.el = el;
+	    },
+	    _setStandardStyle: function (el) {
+	        var style = el.style;
+	        _.each(this.options.style, function (value, key) {
+	            style[key] = (_.isNumber(value) ? (value + 'px') : value);
+	        })
 	    },
 	    _setComment: function (html) {
 	        //TODO
@@ -12184,30 +12194,9 @@
 	        $body.append($body.children('.clear'));
 	        return $current[0];
 	    },
-	    _parseStyle: function () {
-	        //getRules(this);
+	    //todo this is an old implementation, I'm going to rewrite, and prepare to fallback
+	    _parseCustomizedStyle: function () {
 	        var rules = {
-	            float: function (value) {
-	                return 'float: ' + value + ';';
-	            },
-	            lineHeight: function (value) {
-	                return 'line-height: ' + value + 'px;';
-	            },
-	            marginLeft: function (value) {
-	                return 'margin-left: ' + value + 'px;'
-	            },
-	            marginRight: function (value) {
-	                return 'margin-right: ' + value + 'px;'
-	            },
-	            marginBottom: function (value) {
-	                return 'margin-bottom: ' + value + 'px;'
-	            },
-	            marginTop: function (value) {
-	                return 'margin-top: ' + value + 'px;'
-	            },
-	            paddingLeft: function (value) {
-	                return 'padding-left: ' + value + 'px;'
-	            },
 	            horizontalAlign: function (value) {
 	                switch (value) {
 	                    case 'center':
@@ -12219,15 +12208,6 @@
 	                    default:
 	                        return '';
 	                }
-	            },
-	            backgroundColor: function (value) {
-	                return 'background-color: ' + value + ';';
-	            },
-	            borderRight: function (value) {
-	                return 'border-right: ' + value + ';';
-	            },
-	            background: function (value) {
-	                return 'background: ' + value + ';';
 	            }
 	        };
 	        var parsedStyle = '';
@@ -12252,7 +12232,9 @@
 	            var html = _.template(tpl)({
 	                body: this._parseHtml().outerHTML
 	            });
-	            fs.writeFile(path.basename(process.argv[1], '.js') + '.html', html, function (err) {
+	            console.log(html);
+	            var pa = process.argv[1];
+	            fs.writeFile(path.dirname(pa) + '/' + path.basename(pa, '.js') + '.html', html, function (err) {
 	                console.log(err ? '生成失败!' : '生成成功!')
 	            });
 	            return;
@@ -12263,19 +12245,6 @@
 	            this._render(this._parseHtml());
 	        }
 	        this.triggerAfterRender();
-	    },
-	    renderToString: function () {
-	        if (true) {
-	            var fs = __webpack_require__(10);
-	            var path = __webpack_require__(11);
-	            var tpl = __webpack_require__(906);
-	            var html = _.template(tpl)({
-	                body: this._parseHtml().outerHTML
-	            });
-	            fs.writeFile(path.basename(process.argv[1], '.js') + '.html', html, function (err) {
-	                console.log(err ? '生成失败!' : '生成成功!')
-	            });
-	        }
 	    },
 	    triggerAfterRender: function () {
 	        this.trigger('afterRender', {});
@@ -190288,7 +190257,7 @@
 /* 906 */
 /***/ function(module, exports) {
 
-	module.exports = "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"../dist/main.css\">\n    <script src=\"//api.video.taobao.com/video/getPlayerJS\"></script>\n    <title></title>\n</head>\n<body data-state=\"rendered\">\n<%= obj.body %>\n<!--<script src=\"//api.video.taobao.com/video/getPlayerJS\"></script>-->\n<script src=\"../dist/commons.chunk.js\"></script>\n<script src=\"../dist/bundle-browser.js\"></script>\n</body>\n</html>"
+	module.exports = "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <link rel=\"stylesheet\" type=\"text/css\" href=\"./main.css\">\n    <script src=\"//api.video.taobao.com/video/getPlayerJS\"></script>\n    <title></title>\n</head>\n<body data-state=\"rendered\">\n<%= obj.body %>\n<!--<script src=\"./commons.chunk.js\"></script>-->\n<script src=\"./bundle-browser.js\"></script>\n</body>\n</html>"
 
 /***/ },
 /* 907 */
@@ -190702,7 +190671,7 @@
 /* 944 */
 /***/ function(module, exports) {
 
-	module.exports = "<div id=\"<%= obj.id %>\" class=\"field recommend\">\n    <div class=\"recommend_tab_bar\">\n        <% _.each(obj.options.data.data, function(item, index){ %>\n        <div class=\"recommend_tab<%= obj.options.data.activeIndex===index?' active': '' %>\"><%= item.tabName %></div>\n        <% }) %>\n    </div>\n    <% _.each(obj.options.data.data, function(item, index){ %>\n    <div class=\"nano recommend_content<%= obj.options.data.activeIndex!==index?' olive-hidden': '' %>\">\n        <div class=\"nano-content\">\n            <% _.each(item.items, function(item, index){ %>\n\n                <% if (item.type==='preview'){ %>\n                <div class=\"recommend_content_item preview\">\n                    <div class=\"recommend_content_item_main\">\n                        <div class=\"pic-wrapper\">\n                            <img src=\"<%= item.img %>\">\n                            <div class=\"time\"><%= item.time %></div>\n                        </div>\n                        <div class=\"info-wrapper\">\n                            <div class=\"title\"><%= item.name %></div>\n                            <div class=\"count\"><%= item.count %>人已学</div>\n                        </div>\n                        <div class=\"clear\"></div>\n                    </div>\n                </div>\n                <% }else{ %>\n                <div class=\"recommend_content_item series\">\n                    <div class=\"recommend_content_item_main\">\n                        <div class=\"recommend_content_item_name\"><%= item.name %></div>\n                        <div class=\"recommend_content_item_info\">\n                            <div class=\"recommend_content_item_count\">共<%= item.count %>节</div>\n                            <div class=\"recommend_content_item_expand\"></div>\n                        </div>\n                    </div>\n                    <div class=\"recommend_content_item_detail olive-hidden\">\n                        <div class=\"triangle\"></div>\n                        <% _.each(item.items, function(item, index){ %>\n                        <% if (item.items){ %>\n                        <div class=\"summary\"><%= item.name %></div>\n                        <% _.each(item.items, function(item, index){ %>\n                        <div class=\"course\">\n                            <div class=\"index-block\"><%= index + 1 %></div>\n                            <%= item.name %>\n                            <div class=\"time-period\"><%= item.time %></div>\n                        </div>\n                        <% }) %>\n                        <% }else{ %>\n                        <div class=\"course\">\n                            <div class=\"index-block\"><%= index + 1 %></div>\n                            <%= item.name %>\n                            <div class=\"time-period\"><%= item.time %></div>\n                        </div>\n                        <% } %>\n                        <% }) %>\n\n                    </div>\n                </div>\n                <% } %>\n            <% }) %>\n        </div>\n    </div>\n    <% }) %>\n</div>\n"
+	module.exports = "<div id=\"<%= obj.id %>\" class=\"field recommend\">\n    <div class=\"recommend_tab_bar\">\n        <% _.each(obj.options.data.data, function(item, index){ %>\n        <div class=\"recommend_tab<%= obj.options.data.activeIndex===index?' active': '' %>\"><%= item.tabName %></div>\n        <% }) %>\n    </div>\n    <% _.each(obj.options.data.data, function(item, index){ %>\n    <div class=\"nano recommend_content<%= obj.options.data.activeIndex!==index?' olive-hidden': '' %>\">\n        <div class=\"nano-content\">\n            <% _.each(item.items, function(item, index){ %>\n\n                <% if (item.type==='preview'){ %>\n                <div class=\"recommend_content_item preview\">\n                    <div class=\"recommend_content_item_main clearfix\">\n                        <div class=\"pic-wrapper\">\n                            <img src=\"<%= item.img %>\">\n                            <div class=\"time\"><%= item.time %></div>\n                        </div>\n                        <div class=\"info-wrapper\">\n                            <div class=\"title\"><%= item.name %></div>\n                            <div class=\"count\"><%= item.count %>人已学</div>\n                        </div>\n                    </div>\n                </div>\n                <% }else{ %>\n                <div class=\"recommend_content_item series\">\n                    <div class=\"recommend_content_item_main\">\n                        <div class=\"recommend_content_item_name\"><%= item.name %></div>\n                        <div class=\"recommend_content_item_info\">\n                            <div class=\"recommend_content_item_count\">共<%= item.count %>节</div>\n                            <div class=\"recommend_content_item_expand\"></div>\n                        </div>\n                    </div>\n                    <div class=\"recommend_content_item_detail olive-hidden\">\n                        <div class=\"triangle\"></div>\n                        <% _.each(item.items, function(item, index){ %>\n                        <% if (item.items){ %>\n                        <div class=\"summary\"><%= item.name %></div>\n                        <% _.each(item.items, function(item, index){ %>\n                        <div class=\"course\">\n                            <div class=\"index-block\"><%= index + 1 %></div>\n                            <%= item.name %>\n                            <div class=\"time-period\"><%= item.time %></div>\n                        </div>\n                        <% }) %>\n                        <% }else{ %>\n                        <div class=\"course\">\n                            <div class=\"index-block\"><%= index + 1 %></div>\n                            <%= item.name %>\n                            <div class=\"time-period\"><%= item.time %></div>\n                        </div>\n                        <% } %>\n                        <% }) %>\n\n                    </div>\n                </div>\n                <% } %>\n            <% }) %>\n        </div>\n    </div>\n    <% }) %>\n</div>\n"
 
 /***/ },
 /* 945 */
@@ -191798,7 +191767,7 @@
 /* 960 */
 /***/ function(module, exports) {
 
-	module.exports = "<div>\n    <div class=\"o-container body<%= obj.options.layout==='hbox'?' hbox':'' %> clearfix\" style=\"<%= obj.parsedStyle %>\">\n        <%= obj.options.html %>\n    </div>\n</div>"
+	module.exports = "<div style=\"<%= obj.parsedStyle %>\">\n    <div class=\"o-container body<%= obj.options.layout==='hbox'?' hbox':'' %> clearfix\">\n        <%= obj.options.html %>\n    </div>\n</div>"
 
 /***/ },
 /* 961 */
@@ -191935,39 +191904,55 @@
 /***/ },
 /* 976 */,
 /* 977 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var _ = __webpack_require__(5);
+	var Root = __webpack_require__(4);
+	var Component = __webpack_require__(6);
+	var Observable = __webpack_require__(907);
+	var tpl = __webpack_require__(978);
+	__webpack_require__(979);
+
+	module.exports = Root.define({
+	    extend: Component,
+	    mixin: Observable,
+	    tpl: tpl
+	});
+
+/***/ },
+/* 978 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"field tab <%= obj.options.theme %>\" style=\"<%= obj.parsedStyle %>\">\n    <% _.each(obj.options.data, function(item){ %>\n        <a href=\"#\" class=\"tab-item<%= item.active?' active':'' %>\"><%= item.name %></a>\n    <% }); %>\n</div>"
+
+/***/ },
+/* 979 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 978 */,
-/* 979 */
+/* 980 */,
+/* 981 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 982 */,
+/* 983 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Created by Sean on 16/4/2.
 	 */
-	__webpack_require__(980);
-	__webpack_require__(982);
 	__webpack_require__(984);
+	__webpack_require__(986);
+	__webpack_require__(988);
 	//require('../style/lib/apollo-rwd-ie8.min.css');
 	//require('../style/lib/apollo-rwd-ie8-seo.min.css');
 
 /***/ },
-/* 980 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 981 */,
-/* 982 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 983 */,
 /* 984 */
 /***/ function(module, exports) {
 
@@ -191983,6 +191968,20 @@
 /***/ },
 /* 987 */,
 /* 988 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 989 */,
+/* 990 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 991 */,
+/* 992 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin

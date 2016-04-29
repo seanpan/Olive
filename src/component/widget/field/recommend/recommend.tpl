@@ -11,7 +11,7 @@
 
                 <% if (item.type==='preview'){ %>
                 <div class="recommend_content_item preview">
-                    <div class="recommend_content_item_main">
+                    <div class="recommend_content_item_main clearfix">
                         <div class="pic-wrapper">
                             <img src="<%= item.img %>">
                             <div class="time"><%= item.time %></div>
@@ -20,7 +20,6 @@
                             <div class="title"><%= item.name %></div>
                             <div class="count"><%= item.count %>人已学</div>
                         </div>
-                        <div class="clear"></div>
                     </div>
                 </div>
                 <% }else{ %>

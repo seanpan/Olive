@@ -23,7 +23,8 @@ var Root = require('oliveroot');
             Panel: require('./component/container/panel/panel.js'),
             Hero: require('./component/container/hero/hero.js'),
             Form: require('./component/container/form.js'),
-            Table: require('./component/widget/table/table.js')
+            Table: require('./component/widget/smart/table/table.js'),
+            Tab: require('./component/widget/field/tab//tab.js')
         }
     };
     module.exports = global.Olive = Olive;

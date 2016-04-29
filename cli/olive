@@ -7,5 +7,5 @@ if(argv.m==='seo'){
     shell.exec("node ./dist/bundle-node.js");
 }
 else{
-    shell.exec("webpack --config webpack.config.js");
+    shell.exec("webpack --config webpack.config.js --watch");
 }

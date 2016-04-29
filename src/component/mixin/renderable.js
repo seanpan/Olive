@@ -49,29 +49,7 @@ module.exports = Root.define({
     },
     //todo this is an old implementation, I'm going to rewrite, and prepare to fallback
     _parseCustomizedStyle: function () {
-        //getRules(this);
         var rules = {
-            //float: function (value) {
-            //    return 'float: ' + value + ';';
-            //},
-            //lineHeight: function (value) {
-            //    return 'line-height: ' + value + 'px;';
-            //},
-            //marginLeft: function (value) {
-            //    return 'margin-left: ' + value + 'px;'
-            //},
-            //marginRight: function (value) {
-            //    return 'margin-right: ' + value + 'px;'
-            //},
-            //marginBottom: function (value) {
-            //    return 'margin-bottom: ' + value + 'px;'
-            //},
-            //marginTop: function (value) {
-            //    return 'margin-top: ' + value + 'px;'
-            //},
-            //paddingLeft: function (value) {
-            //    return 'padding-left: ' + value + 'px;'
-            //},
             horizontalAlign: function (value) {
                 switch (value) {
                     case 'center':
@@ -83,16 +61,7 @@ module.exports = Root.define({
                     default:
                         return '';
                 }
-            },
-            //backgroundColor: function (value) {
-            //    return 'background-color: ' + value + ';';
-            //},
-            //borderRight: function (value) {
-            //    return 'border-right: ' + value + ';';
-            //},
-            //background: function (value) {
-            //    return 'background: ' + value + ';';
-            //}
+            }
         };
         var parsedStyle = '';
         _.each(this.options.style, function (value, key) {
@@ -116,7 +85,8 @@ module.exports = Root.define({
             var html = _.template(tpl)({
                 body: this._parseHtml().outerHTML
             });
-            fs.writeFile(path.basename(process.argv[1], '.js') + '.html', html, function (err) {
+            var pa = process.argv[1];
+            fs.writeFile(path.dirname(pa) + '/' + path.basename(pa, '.js') + '.html', html, function (err) {
                 console.log(err ? '生成失败!' : '生成成功!')
             });
             return;
@@ -127,20 +97,6 @@ module.exports = Root.define({
             this._render(this._parseHtml());
         }
         this.triggerAfterRender();
-    },
-    //todo deprecated
-    renderToString: function () {
-        if (OENV === 'node') {
-            var fs = require('fs');
-            var path = require('path');
-            var tpl = require('./template.tpl');
-            var html = _.template(tpl)({
-                body: this._parseHtml().outerHTML
-            });
-            fs.writeFile(path.basename(process.argv[1], '.js') + '.html', html, function (err) {
-                console.log(err ? '生成失败!' : '生成成功!')
-            });
-        }
     },
     triggerAfterRender: function () {
         this.trigger('afterRender', {});

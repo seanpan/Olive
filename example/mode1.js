@@ -193,7 +193,9 @@ var viewport = new Viewport({
                                 width: 1185,
                                 marginBottom: 10,
                                 paddingLeft: 10,
-                                background: 'url(//cbu01.alicdn.com/cms/upload/2014/525/130/2031525_1751704920.png) no-repeat scroll -3px -300px'
+                                backgroundImage: 'url(//cbu01.alicdn.com/cms/upload/2014/525/130/2031525_1751704920.png)',
+                                backgroundPositionX: -3,
+                                backgroundPositionY: -300
                             }
                         },
                         {
@@ -466,5 +468,4 @@ var viewport = new Viewport({
 });
 
 //渲染到页面,也可渲染到其他组件内
-//viewport.renderTo('body');
-viewport.renderToString();
+viewport.renderTo('body');
