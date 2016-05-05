@@ -481,24 +481,49 @@
     background-position: -157px -80px; }
 @charset "UTF-8";
 .panel {
-  background-color: #fff; }
-  .panel .o-container {
+  background-color: #FFF;
+  border-color: #E2E2E2;
+  border-top-color: #B7A6A1;
+  border-top-width: 2px;
+  border-top-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-left-width: 1px;
+  border-left-style: solid; }
+  .panel.dark {
+    background-color: #F9F9F9; }
+  .panel .header {
+    background-color: #FFF;
+    border-color: #E2E2E2; }
+    .panel .header .link {
+      color: #999; }
+    .panel .header .title .highLightLine {
+      background-color: #EC6846; }
+    .panel .header .title .titleContent {
+      color: #EC6846; }
+    .panel .header .title .separator {
+      background-color: #E2E2E2; }
+  .panel.last {
+    border-right-width: 1px;
+    border-right-style: solid; }
+  .panel .panelBody {
+    padding: 20px 20px; }
+  .panel .ct {
     margin-bottom: 20px; }
   .panel .header {
     position: relative;
     height: 37px;
-    border-bottom: 1px solid #E2E2E2;
-    background-color: #FFF; }
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-style: solid; }
     .panel .header .link {
       position: absolute;
       right: 15px;
-      top: 8px;
-      color: #999; }
+      top: 8px; }
     .panel .header .title {
       position: relative;
       display: inline-block; }
-      .panel .header .title .orangeLine {
-        background-color: #EC6846;
+      .panel .header .title .highLightLine {
         font-size: 0;
         height: 2px;
         position: absolute;
@@ -506,31 +531,18 @@
         width: 100%; }
       .panel .header .title .titleContent {
         margin: 10px 12px 10px 25px;
-        color: #EC6846;
         font: 16px/16px 'Microsoft YaHei', Tahoma, Arial, 宋体, sans-serif;
         font-weight: 700; }
-      .panel .header .title .seperator {
-        background-color: #E2E2E2;
+      .panel .header .title .separator {
         height: 15px;
         position: absolute;
         right: 0;
         top: 15px;
         width: 1px; }
-
-.panel {
-  border-top: 2px solid #B7A6A1;
-  border-bottom: 1px solid #E2E2E2;
-  border-left: 1px solid #E2E2E2; }
-  .panel.last {
-    border-right: 1px solid #E2E2E2; }
-  .panel.dark {
-    background-color: #F9F9F9; }
-  .panel .panelBody {
-    padding: 20px 20px; }
 @charset "UTF-8";
 .hero {
   background-color: #fff; }
-  .hero .o-container {
+  .hero .ct {
     margin-bottom: 20px; }
   .hero .header {
     background: url(1cda9e178447c43a10bb57f504a4a85e.png) no-repeat;

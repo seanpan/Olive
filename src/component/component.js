@@ -17,6 +17,9 @@ module.exports = Root.define({
         if (_.isFunction(this._registerEvents)) {
             this._registerEvents();
         }
+        if (this.options.ref) {
+            this.registerInstance();
+        }
     },
     processItems: function () {
         var self = this;
@@ -27,6 +30,24 @@ module.exports = Root.define({
     parseItem: function (item) {
         return new item.type(item);
     },
+    registerInstance: function () {
+        Olive.setComp(this.options.ref, this);
+        //console.log('registering instance...', Olive.getComp(this.options.ref))
+    },
     destroy: function () {
+        this._unregisterComp();
+        this.remove();
+    },
+    hide: function () {
+        $(this.el).hide();
+    },
+    show: function () {
+        $(this.el).show();
+    },
+    _unregisterComp: function () {
+        Olive.unregisterComp(this.options.ref);
+    },
+    remove: function () {
+        $(this.el).remove();
     }
 });

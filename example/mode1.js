@@ -283,6 +283,7 @@ var viewport = new Viewport({
                                     id: 'teacher-summary',
                                     cls: 'last dark',
                                     title: '讲师简介',
+                                    ref: 'teacherSummaryPanel',
                                     style: {
                                         height: 217,
                                         width: 242
@@ -321,6 +322,7 @@ var viewport = new Viewport({
                                                             listeners: {
                                                                 click: function () {
                                                                     alert('You clicked a link.');
+                                                                    Olive.getComp('teacherSummaryPanel').destroy();
                                                                 }
                                                             }
                                                         }

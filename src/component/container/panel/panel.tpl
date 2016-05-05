@@ -1,7 +1,7 @@
 <div class="panel" style="<%= obj.parsedStyle %>">
     <div class="header">
         <div class="title">
-            <div class="orangeLine"></div>
+            <div class="highLightLine"></div>
             <div class="titleContent"><%= obj.options.title %></div>
             <div class="seperator"></div>
         </div>
