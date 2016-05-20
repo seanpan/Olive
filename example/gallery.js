@@ -2,6 +2,7 @@
 var Container = Olive.components.Container;
 var Viewport = Olive.components.Viewport;
 var Tab = Olive.components.Tab;
+var ReactBtn = Olive.components.ReactBtn;
 
 //Ternary Binary HBox VBox
 
@@ -10,10 +11,12 @@ var viewport = new Viewport({
     items: [
         {
             type: Container,
+            htmlComment: 'a container',
             items: [
                 {
                     type: Tab,
                     theme: 'plain',
+                    htmlComment: 'hot tab panel',
                     data: [
                         {
                             name: '今日焦点',
@@ -26,6 +29,14 @@ var viewport = new Viewport({
                             name: '视频推荐'
                         }
                     ]
+                }
+            ]
+        },
+        {
+            type: Container,
+            items: [
+                {
+                    type: ReactBtn
                 }
             ]
         }

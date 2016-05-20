@@ -1,6 +1,7 @@
 var _ = require('underscore');
 var $ = (OENV === 'node' ? require('jquery')(require('jsdom').jsdom().defaultView) : require('jquery'));
 var Root = require('oliveroot');
+var core = require('../../core/core.js');
 
 module.exports = Root.define({
     _parseHtml: function () {
@@ -10,33 +11,42 @@ module.exports = Root.define({
         var toolHtmlElements = _.map(this.toolbar, function (tool) {
             return tool._parseHtml();
         });
-        //return html element
+        //return html el
         return this._parseCurrentHtml({itemHtmlElements: itemHtmlElements, toolHtmlElements: toolHtmlElements});
     },
     _parseCurrentHtml: function (children) {
         this._parseCustomizedStyle();
         //TODO refactor
-        var el = this._addChildren(this._setComment(_.template(this.tpl)(this)), children);
-        this._setStandardStyle(el);
-        this._setId(el);
-        this._setClass(el);
-        return this.el = el;
+        var fragment = this._addChildren(_.template(this.tpl)(this), children);
+        this.el = fragment;
+        this.triggerLifeCycle('afterMount');
+        if (!fragment) {
+            return;
+        }
+        this._setStandardStyle(fragment);
+        this._setId(fragment);
+        this._setClass(fragment);
+        //return this._setComment(fragment);
+        return fragment;
     },
-    _setStandardStyle: function (el) {
-        var style = el.style;
+    _setStandardStyle: function (fragment) {
+        var style = fragment.style;
         _.each(this.options.style, function (value, key) {
             style[key] = (_.isNumber(value) ? (value + 'px') : value);
         })
     },
-    _setComment: function (html) {
-        //TODO
-        return html;
+    _setComment: function (fragment) {
+        var htmlComment = this.options.htmlComment;
+        if (!htmlComment) {
+            return fragment.outerHTML;
+        }
+        return '<!--' + htmlComment + ' start -->' + fragment.outerHTML + '<!--' + htmlComment + ' end -->';
     },
-    _setClass: function (el) {
-        $(el).addClass(this.options.cls);
+    _setClass: function (fragment) {
+        $(fragment).addClass(this.options.cls);
     },
-    _setId: function (el) {
-        $(el).attr('id', this.options.id);
+    _setId: function (fragment) {
+        $(fragment).attr('id', this.options.id);
     },
     _addChildren: function (current, children) {
         //this.toolbarHtml = children.toolbar;
@@ -47,7 +57,7 @@ module.exports = Root.define({
         $body.append($body.children('.clear'));
         return $current[0];
     },
-    //todo this is an old implementation, I'm going to rewrite, and prepare to fallback
+    //todo this is an old implementation, going to rewrite, and prepare to fallback
     _parseCustomizedStyle: function () {
         var rules = {
             horizontalAlign: function (value) {
@@ -74,10 +84,11 @@ module.exports = Root.define({
         });
         return this.parsedStyle = parsedStyle;
     },
-    _render: function (html) {
-        $(this.parentDom).append(html);
+    _render: function (el) {
+        $(this.parentDom).html(el);
     },
     renderTo: function (target) {
+        this.triggerLifeCycleCascade('beforeRender');
         if (OENV === 'node') {
             var fs = require('fs');
             var path = require('path');
@@ -92,17 +103,20 @@ module.exports = Root.define({
             return;
         }
         this.parentDom = target || this.target || 'body';
-        var isRendered = $('body').data('state');
+        var isRendered = core.getRenderState();
         if (isRendered !== 'rendered') {
             this._render(this._parseHtml());
         }
-        this.triggerAfterRender();
+        this.triggerLifeCycleCascade('afterRender');
     },
-    triggerAfterRender: function () {
-        this.trigger('afterRender', {});
+    triggerLifeCycleCascade: function (event) {
+        this.trigger(event, {});
         _.each(this.children, function (child) {
-            child.triggerAfterRender();
+            child.triggerLifeCycleCascade(event);
         });
+    },
+    triggerLifeCycle: function (event) {
+        this.trigger(event, {});
     },
     remove: function () {
     },

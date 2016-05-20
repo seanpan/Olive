@@ -3,6 +3,7 @@ var _ = require('underscore'),
 var Root = require('oliveroot');
 var Renderable = require('./mixin/renderable.js');
 var Observable = require('./mixin/observable.js');
+var core = require('../core/core.js');
 
 var sid = 0;
 
@@ -31,8 +32,7 @@ module.exports = Root.define({
         return new item.type(item);
     },
     registerInstance: function () {
-        Olive.setComp(this.options.ref, this);
-        //console.log('registering instance...', Olive.getComp(this.options.ref))
+        core.setComp(this.options.ref, this);
     },
     destroy: function () {
         this._unregisterComp();
@@ -45,7 +45,7 @@ module.exports = Root.define({
         $(this.el).show();
     },
     _unregisterComp: function () {
-        Olive.unregisterComp(this.options.ref);
+        core.unregisterComp(this.options.ref);
     },
     remove: function () {
         $(this.el).remove();

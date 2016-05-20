@@ -8,17 +8,18 @@ module.exports = Root.define({
         MicroEvent.mixin(klass);
     },
     _addEventHooks: function () {
-        var self = this;
         if (OENV !== 'node') {
-            this.bind('afterRender', function () {
-                _.isFunction(self.afterRender) && self.afterRender();
-            });
+            this._addEventHook('afterMount');
+            this._addEventHook('beforeRender');
+            this._addEventHook('afterRender');
         }
-        //else {
-        //    if (_.isFunction(self.afterRender)) {
-        //        console.log(self.afterRender.toString());
-        //    }
-        //}
+    },
+    _addEventHook: function (event) {
+        var self = this;
+        this.bind(event, function () {
+            var callback = self[event];
+            _.isFunction(callback) && callback.apply(this);
+        });
     },
     _registerEvents: function () {
         var self = this;
