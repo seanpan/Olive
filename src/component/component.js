@@ -11,16 +11,19 @@ module.exports = Root.define({
     mixin: [Renderable, Observable],
     initialize: function () {
         this.id = 'olive_' + (sid++);
-        if (_.isFunction(this._addEventHooks)) {
-            this._addEventHooks();
-        }
+        this.doHooks();
         this.children = this.processItems();
-        if (_.isFunction(this._registerEvents)) {
-            this._registerEvents();
-        }
         if (this.options.ref) {
             this.registerInstance();
         }
+    },
+    doHooks: function () {
+        //I believe it's order sensitive here. Need time to check.
+        var list = [this._addEventHooks, this._applyLayout, this._registerEvents];
+        var self = this;
+        _.each(list, function (item) {
+            _.isFunction(item) && item.apply(self);
+        });
     },
     processItems: function () {
         var self = this;

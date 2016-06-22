@@ -71,6 +71,9 @@ module.exports = Root.define({
                     default:
                         return '';
                 }
+            },
+            bodyDisplay: function (value) {
+                return 'display: ' + value + ';';
             }
         };
         var parsedStyle = '';
@@ -78,9 +81,9 @@ module.exports = Root.define({
             var rule = rules[key];
             if (rule) {
                 parsedStyle += rule(value);
-                return;
+                //return;
             }
-            parsedStyle += (key + ': ' + (_.isNumber(value) ? (value + 'px') : value) + ';');
+            //parsedStyle += (key + ': ' + (_.isNumber(value) ? (value + 'px') : value) + ';');
         });
         return this.parsedStyle = parsedStyle;
     },

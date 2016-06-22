@@ -46,11 +46,13 @@
 var Root = require('oliveroot');
 var _ = require('underscore');
 var core = require('./core/core.js');
+var Layout = require('./layout/layoutInterface.js');
 
 (function (global) {
 
     var Olive = {
         define: Root.define,
+        Layout: Layout,
         components: {
             Component: require('./component/component.js'),
             Button: require('./component/widget/field/button/button.js'),
@@ -71,7 +73,9 @@ var core = require('./core/core.js');
             Form: require('./component/container/form.js'),
             Table: require('./component/widget/smart/table/table.js'),
             Tab: require('./component/widget/field/tab//tab.js'),
-            ReactBtn: require('./component/widget/field/react-btn/react-btn.js')
+            ReactBtn: require('./component/widget/field/react-btn/react-btn.js'),
+            //AtomCombo: require('./component/widget/field/atom-combo/atom-combo.js'),
+            AntdDatePicker: require('./component/widget/field/antd-datepicker/antd-datepicker.js')
         }
     };
 

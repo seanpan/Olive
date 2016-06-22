@@ -3,7 +3,9 @@
  */
 require('./src/lib/bindShimming.js');
 
-require('./example/mode1.js');
+require('./example/multi-lib.js');
+//require('./example/mode1.js');
+//require('./example/layout.js');
 //require('./src/app.js');
 
 //style
